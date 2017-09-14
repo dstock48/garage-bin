@@ -51,6 +51,22 @@ describe('API endpoints', () => {
       });
   });
 
+  it('should return an error when missing a required parameter', (done) => {
+    chai.request(server)
+      .post('/api/v1/item')
+      .send({
+        item_name: 'bleach',
+        // reason: 'clean up red stains', <- missing parameter
+        cleanliness: 'sparkling'
+      })
+      .end((err, res) => {
+        res.should.have.status(422);
+        res.body.should.have.property('error');
+        res.body.error.should.equal('Missing required parameter: reason');
+        done();
+      });
+  });
+
   it('should add a new item to the database', (done) => {
     chai.request(server)
       .post('/api/v1/item')
