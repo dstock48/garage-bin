@@ -51,4 +51,25 @@ describe('API endpoints', () => {
       });
   });
 
+  it('should add a new item to the database', (done) => {
+    chai.request(server)
+      .post('/api/v1/item')
+      .send({
+        item_name: 'bleach',
+        reason: 'clean up red stains',
+        cleanliness: 'sparkling'
+      })
+      .end((err, res) => {
+        res.should.have.status(201);
+        res.should.be.json;
+        res.body.should.have.property('item_name');
+        res.body.item_name.should.equal('bleach');
+        res.body.should.have.property('reason');
+        res.body.reason.should.equal('clean up red stains');
+        res.body.should.have.property('cleanliness');
+        res.body.cleanliness.should.equal('sparkling');
+        done();
+      });
+  });
+
 });
