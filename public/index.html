@@ -35,6 +35,14 @@
           <span>Rancid Items: <span class="count" id="rancid-count">0</span></span>
         </div>
       </div>
+      <div class="sorting">
+        <label for="select-sort">Sort List by:</label>
+        <select id="select-sort" class="select-sort">
+          <option selected value="date-new">Newest</option>
+          <option value="date-old">Oldest</option>
+          <option value="alph">Alphabetic</option>
+        </select>
+      </div>
       <div id="garage-items"></div>
     </main>
     <script src=" https://code.jquery.com/jquery-3.2.1.min.js"></script>

@@ -4,6 +4,36 @@ getGarageItems();
 // EVENT LISTENERS ////////////////////////////
 ///////////////////////////////////////////////
 
+$('#select-sort').on('change', function(e) {
+  $('#garage-items').empty();
+
+  $('#sparkling-count').text('0');
+  $('#dusty-count').text('0');
+  $('#rancid-count').text('0');
+  $('#total-count').text('0');
+
+  switch (e.target.value) {
+  case 'alph':
+    garageItems
+      .sort((a, b) => a.item_name < b.item_name)
+      .forEach(item => appendItem(item));
+    break;
+  case 'date-new':
+    garageItems
+      .sort((a, b) => a.created_at > b.created_at)
+      .forEach(item => appendItem(item));
+    break;
+  case 'date-old':
+    garageItems
+      .sort((a, b) => a.created_at < b.created_at)
+      .forEach(item => appendItem(item));
+    break;
+  default:
+  }
+
+  e.target.blur();
+});
+
 $('#new-item-inputs').on('submit', e => {
   e.preventDefault();
   const name = $('#item-name-input');
@@ -22,6 +52,7 @@ $('#new-item-inputs').on('submit', e => {
     .then(data => data.json())
     .then((item) => {
       appendItem(item);
+      garageItems.push(item);
 
       name.val('');
       reason.val('');
@@ -89,7 +120,6 @@ $('#garage-items').on('change', '.item-cleanliness', function(e) {
 ///////////////////////////////////////////////
 
 function appendItem(item) {
-  garageItems.push(item);
   $('#garage-items').prepend(`
     <div class="item-card" data-itemid="${item.id}">
       <h2 class="item-name">${item.item_name}</h2>
@@ -114,6 +144,7 @@ function getGarageItems() {
         .sort((a, b) => a.created_at > b.created_at)
         .forEach(item => {
           appendItem(item);
+          garageItems.push(item);
         });
     })
     .catch(err => console.log(err)); // eslint-disable-line no-console
