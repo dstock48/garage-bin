@@ -109,4 +109,26 @@ describe('API endpoints', () => {
       });
   });
 
+  it('should return an error if the updated cleanliness value is invalid', (done) => {
+    chai.request(server)
+      .get('/api/v1/item')
+      .end((err, res) => {
+        res.body[0].item_name.should.eql('shovel');
+        res.body[0].cleanliness.should.eql('dusty');
+
+        chai.request(server)
+          .patch('/api/v1/item')
+          .send({
+            id: 1,
+            cleanliness: 'squeaky-clean'
+          })
+          .end((err, res) => {
+            res.should.have.status(422);
+            res.body.should.have.property('error');
+            res.body.error.should.equal('SQUEAKY-CLEAN is not a valid cleanliness option. Please choose from the following: SPARKLING, DUSTY, RANCID.');
+            done();
+          });
+      });
+  });
+
 });
