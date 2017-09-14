@@ -34,4 +34,21 @@ describe('API endpoints', () => {
       });
   });
 
+  it('should return an array of garage items', (done) => {
+    chai.request(server)
+      .get('/api/v1/item')
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.should.be.json;
+        res.body.should.be.a('array');
+        res.body.should.have.length(3);
+        res.body.forEach(item => {
+          item.should.have.property('item_name');
+          item.should.have.property('reason');
+          item.should.have.property('cleanliness');
+        });
+        done();
+      });
+  });
+
 });
