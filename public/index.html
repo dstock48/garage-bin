@@ -11,9 +11,23 @@
       <h1 class="logo">GARAGE BIN</h1>
     </header>
     <main>
-      <div id="garage-items">
-        
-      </div>
+      <form id="new-item-inputs">
+        <label for="item-name-input">Name</label>
+        <input required id="item-name-input" type="text" placeholder="enter a new item name...">
+
+        <label for="item-reason-input">Reason</label>
+        <input required id="item-reason-input" type="text" placeholder="enter a new reason...">
+
+        <label for="item-cleanliness-input">Cleanliness</label>
+        <select required id="item-cleanliness-input" value="">
+          <option selected disabled value="">select a value...</option>
+          <option value="sparkling">Sparking</option>
+          <option value="dusty">Dusty</option>
+          <option value="rancid">Rancid</option>
+        </select>
+        <button>Add New Item</button>
+      </form>
+      <div id="garage-items"></div>
     </main>
     <script src=" https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="index.js" charset="utf-8"></script>

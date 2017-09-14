@@ -23,6 +23,57 @@ main {
   padding: 20px;
 }
 
+#new-item-inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 40px;
+  width: 300px;
+
+  label {
+    font-weight: 600;
+
+    &:not(:first-child) {
+      margin-top: 10px;
+    }
+    &:not(:last-child) {
+      margin-bottom: 2px;
+    }
+  }
+
+  input,
+  select {
+    height: 40px;
+    padding: 5px;
+    font-size: 20px;
+    border: 2px solid red;
+    outline: none;
+    transition: 200ms;
+
+    &:focus {
+      border-color: orange;
+    }
+
+    &::placeholder {
+      font-weight: 300;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+    height: 40px;
+    background-color: #fff;
+    color: magenta;
+    border: 2px solid magenta;
+    transition: 200ms;
+
+    &:hover {
+      cursor: pointer;
+      background-color: magenta;
+      color: #fff;
+    }
+  }
+}
+
 #garage-items {
   display: grid;
   grid-template-columns: 1fr 1fr;

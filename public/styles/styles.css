@@ -16,6 +16,43 @@ header {
 main {
   padding: 20px; }
 
+#new-item-inputs {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto 40px;
+  width: 300px; }
+  #new-item-inputs label {
+    font-weight: 600; }
+    #new-item-inputs label:not(:first-child) {
+      margin-top: 10px; }
+    #new-item-inputs label:not(:last-child) {
+      margin-bottom: 2px; }
+  #new-item-inputs input,
+  #new-item-inputs select {
+    height: 40px;
+    padding: 5px;
+    font-size: 20px;
+    border: 2px solid red;
+    outline: none;
+    transition: 200ms; }
+    #new-item-inputs input:focus,
+    #new-item-inputs select:focus {
+      border-color: orange; }
+    #new-item-inputs input::placeholder,
+    #new-item-inputs select::placeholder {
+      font-weight: 300; }
+  #new-item-inputs button {
+    margin-top: 10px;
+    height: 40px;
+    background-color: #fff;
+    color: magenta;
+    border: 2px solid magenta;
+    transition: 200ms; }
+    #new-item-inputs button:hover {
+      cursor: pointer;
+      background-color: magenta;
+      color: #fff; }
+
 #garage-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
