@@ -90,3 +90,5 @@ app.listen(app.get('port'), () => {
   const portNum = app.get('port');
   console.log(`Garage Bin is running on http://localhost:${portNum}`); // eslint-disable-line no-console
 });
+
+module.exports = app;
