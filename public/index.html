@@ -13,20 +13,28 @@
     <main>
       <form id="new-item-inputs">
         <label for="item-name-input">Name</label>
-        <input required id="item-name-input" type="text" placeholder="enter a new item name...">
+        <input required id="item-name-input" type="text" placeholder="what's in your garage?">
 
         <label for="item-reason-input">Reason</label>
-        <input required id="item-reason-input" type="text" placeholder="enter a new reason...">
+        <input required id="item-reason-input" type="text" placeholder="why's it there?">
 
         <label for="item-cleanliness-input">Cleanliness</label>
         <select required id="item-cleanliness-input" value="">
-          <option selected disabled value="">select a value...</option>
+          <option selected disabled value="">how dirty is it?</option>
           <option value="sparkling">Sparking</option>
           <option value="dusty">Dusty</option>
           <option value="rancid">Rancid</option>
         </select>
         <button>Add New Item</button>
       </form>
+      <div class="item-counts">
+        <p class="total-item-count">Total Items: <span class="count" id="total-count">0</span></p>
+        <div class="clean-count">
+          <span>Sparkling Items: <span class="count" id="sparkling-count">0</span></span>
+          <span>Dusty Items: <span class="count" id="dusty-count">0</span></span>
+          <span>Rancid Items: <span class="count" id="rancid-count">0</span></span>
+        </div>
+      </div>
       <div id="garage-items"></div>
     </main>
     <script src=" https://code.jquery.com/jquery-3.2.1.min.js"></script>
