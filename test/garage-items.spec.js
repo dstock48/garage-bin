@@ -88,4 +88,25 @@ describe('API endpoints', () => {
       });
   });
 
+  it('should update the cleanliness value of an item in the database', (done) => {
+    chai.request(server)
+      .get('/api/v1/item')
+      .end((err, res) => {
+        res.body[0].item_name.should.eql('shovel');
+        res.body[0].cleanliness.should.eql('dusty');
+
+        chai.request(server)
+          .patch('/api/v1/item')
+          .send({
+            id: 1,
+            cleanliness: 'sparkling'
+          })
+          .end((err, res) => {
+            res.body[0].item_name.should.eql('shovel');
+            res.body[0].cleanliness.should.eql('sparkling');
+            done();
+          });
+      });
+  });
+
 });
