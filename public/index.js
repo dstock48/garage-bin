@@ -4,6 +4,18 @@ getGarageItems();
 // EVENT LISTENERS ////////////////////////////
 ///////////////////////////////////////////////
 
+$('.show-btn').on('click', () => {
+  if (!$('#door').hasClass('up')) {
+    $('#door').addClass('up');
+    $('main').removeClass('hidden');
+    $('.show-btn').text('Close Garage Door');
+  } else {
+    $('#door').removeClass('up');
+    $('main').addClass('hidden');
+    $('.show-btn').text('Open Garage Door');
+  }
+});
+
 $('#select-sort').on('change', function(e) {
   $('#garage-items').empty();
 
@@ -26,6 +38,11 @@ $('#select-sort').on('change', function(e) {
   case 'date-old':
     garageItems
       .sort((a, b) => a.created_at < b.created_at)
+      .forEach(item => appendItem(item));
+    break;
+  case 'clean':
+    garageItems
+      .sort((a, b) => a.cleanliness < b.cleanliness)
       .forEach(item => appendItem(item));
     break;
   default:

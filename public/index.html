@@ -9,8 +9,10 @@
   <body>
     <header>
       <h1 class="logo">GARAGE BIN</h1>
+      <button class="show-btn">Open Garage Door</button>
     </header>
-    <main>
+    <div id="door"></div>
+    <main class="hidden">
       <form id="new-item-inputs">
         <label for="item-name-input">Name</label>
         <input required id="item-name-input" type="text" placeholder="what's in your garage?">
@@ -41,6 +43,7 @@
           <option selected value="date-new">Newest</option>
           <option value="date-old">Oldest</option>
           <option value="alph">Alphabetic</option>
+          <option value="clean">Cleanliness</option>
         </select>
       </div>
       <div id="garage-items"></div>
